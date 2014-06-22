@@ -43,11 +43,12 @@ for (id in c(2L:(cols.number-1))) set(pml.testing, j=id, value=as.numeric(pml.te
 ```
 
 ## Feature Selection
+The following considerations were taken into account to choose the relevant features:
 1. Many of the columns contain a very large number of NAs values, these columns have been removed.  
 2. Change classe to factor
 3. Remove columns with high correlation
 
-In summary, many columns have been discarded. The remaining 45 feature variables are used to predict the variable "classe".    
+In summary, many columns have been discarded. The remaining 45 feature variables were used to predict the variable "classe".    
 
 ```{r feature-selection, results='hide'}
 nas <- sapply(2L:(cols.number-1), function(i) {sum(is.na(pml.training[,i, with=FALSE]))})

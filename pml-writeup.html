@@ -91,12 +91,8 @@ for (id in c(2L:(cols.number-1))) set(pml.testing, j=id, value=as.numeric(pml.te
 </div>
 <div id="feature-selection" class="section level2">
 <h2>Feature Selection</h2>
-<ol style="list-style-type: decimal">
-<li>Many of the columns contain a very large number of NAs values, these columns have been removed.<br /></li>
-<li>Change classe to factor</li>
-<li>Remove columns with high correlation</li>
-</ol>
-<p>In summary, many columns have been discarded. The remaining 45 feature variables are used to predict the variable “classe”.</p>
+<p>The following considerations were taken into account to choose the relevant features: 1. Many of the columns contain a very large number of NAs values, these columns have been removed.<br />2. Change classe to factor 3. Remove columns with high correlation</p>
+<p>In summary, many columns have been discarded. The remaining 45 feature variables were used to predict the variable “classe”.</p>
 <pre class="r"><code>nas &lt;- sapply(2L:(cols.number-1), function(i) {sum(is.na(pml.training[,i, with=FALSE]))})
 colnames.to.drop &lt;- colnames(pml.training)[which(nas != 0) + 1]
 pml.training[,eval(colnames.to.drop) := NULL]
